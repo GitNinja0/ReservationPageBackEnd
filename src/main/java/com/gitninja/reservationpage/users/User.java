@@ -7,22 +7,22 @@ import lombok.*;
 import java.util.Set;
 
 @Entity
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
+@Builder
 @Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
-    Long id;
+    private Long id;
 
-    String username;
+    private String username;
 
-    String password;
+    private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "role_users", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id_user"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id_role"))
