@@ -1,19 +1,21 @@
 package com.gitninja.reservationpage.security;
 
-import com.gitninja.reservationpage.roles.Role;
-import com.gitninja.reservationpage.users.User;
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import com.gitninja.reservationpage.roles.Role;
+import com.gitninja.reservationpage.users.User;
+
 
 public class SecurityUser implements UserDetails {
-
+    
     User user;
 
-    public SecurityUser (User user){
+    public SecurityUser(User user) {
         this.user = user;
     }
 
@@ -21,12 +23,12 @@ public class SecurityUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-        System.out.println("----------------");
+        System.out.println("-------------------");
         System.out.println(user.getRoles());
-        System.out.println("----------------");
+        System.out.println("-------------------");
 
-        for (Role role: user.getRoles()){
-            System.out.printf("User role: " + role.getName());
+        for (Role role : user.getRoles()){
+            System.out.println("User role: " + role.getName());
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
             authorities.add(authority);
         }
@@ -63,4 +65,6 @@ public class SecurityUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    
 }

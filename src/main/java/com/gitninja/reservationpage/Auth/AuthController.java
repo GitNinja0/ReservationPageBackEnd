@@ -1,4 +1,7 @@
-package com.gitninja.reservationpage.security;
+package com.gitninja.reservationpage.Auth;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,15 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Controller
-@RequestMapping(path = "{api-endpoint}")
+@RequestMapping(path = "${api-endpoint}")
 public class AuthController {
 
     @GetMapping(path = "/login")
     public ResponseEntity<Map<String, String>> login() {
+
         SecurityContext contextHolder = SecurityContextHolder.getContext();
         Authentication auth = contextHolder.getAuthentication();
 
@@ -27,5 +28,6 @@ public class AuthController {
         json.put("roles", auth.getAuthorities().iterator().next().toString());
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
+
     }
 }

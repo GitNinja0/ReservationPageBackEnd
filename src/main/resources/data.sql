@@ -1,5 +1,5 @@
 /*Defult User*/
-INSERT INTO users(id_user, username, password) VALUES (default, 'pepe', '$2a$12$SQ/OaT/7D4baB3WyHDpvsupTxj/zundjsiBjXdLtQVzoUt.LWKTaq');
+INSERT INTO users(id_user, username, password) VALUES (default, 'admin', '$2a$12$xOx5K0CaHRWkRgaZBRHvZ.tcrVC/AeA3sIjCySnHKk6ZEM9kmuIyO');
 INSERT INTO users(id_user, username, password) VALUES (default, 'paco', '$2a$12$SQ/OaT/7D4baB3WyHDpvsupTxj/zundjsiBjXdLtQVzoUt.LWKTaq');
 
 /*Roles*/
